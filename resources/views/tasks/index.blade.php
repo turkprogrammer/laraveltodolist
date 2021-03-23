@@ -66,12 +66,12 @@
 
                             <td>{{ $task['title'] }}</td>
 
-                            <td><a href="{{ route('tasks.edit', $task['id']) }}" class="btn btn-secondary"> Edit</td>
+                            <td><a href="{{ route('tasks.edit', $task['id']) }}" class="btn btn-secondary"><i class="far fa-edit"></i></td>
 
                             <td>
                                 <form action="{{ route('tasks.destroy', $task['id']) }}" method="post" class="c2">
                                     @csrf @method('DELETE') <button type="submit" class="btn btn-danger">
-                                        &#1059;&#1076;&#1072;&#1083;&#1080;&#1090;&#1100;</button>
+                                        <i class="far fa-trash-alt"></i></button>
                                 </form>
                             </td>
 
