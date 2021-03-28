@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+//use Facades\App\Repository\Tasks;
 use Illuminate\Http\Request;
 use Session;
+
+
+
 
 
 class TaskController extends Controller
@@ -16,11 +20,15 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::orderBy('id', 'desc')->paginate(10);
+        $tasks = Task::orderBy('id', 'desc')->paginate(7);
+
 
         return view('tasks.index', [
             'tasks' => $tasks
         ]);
+
+        /*$tasks = Tasks::all('title');
+        return view('tasks.index', compact('tasks'));*/
     }
 
     /**
@@ -105,6 +113,6 @@ class TaskController extends Controller
     {
         $task->delete();
         Session::flash('success', 'Задача #' . $task['id'] . ' успешно удалена!');
-        return redirect()->back();
+        return redirect()->route('tasks.index');
     }
 }
